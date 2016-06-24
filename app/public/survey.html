@@ -145,29 +145,85 @@
 	  		
 	  	</script> -->
 <script type="text/javascript">
-		
-		// Question: What does this code do? 
-		$(submit).on("click", function(){
 
-			var newFriend = 
-			{
-				name: $("#name").val().trim(),
-				photo: $("#photo").val().trim(),
-				scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),]		
-			};
 
-			var currentURL = window.location.origin;
 
-			// Question: What does this code do??
-			$.post( currentURL + "/api/new", newFriend)
-				.done(function(data){
-					console.log(data);
-					alert("Adding character...")
-				})
 
-			return false;
 
-		});	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Adding new friends to the list 
+$(submit).on("click", function(){
+
+	var newFriend = 
+	{
+		name: $("#name").val().trim(),
+		photo: $("#photo").val().trim(),
+		scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(),]		
+	};
+
+	var currentURL = window.location.origin;
+
+	// post new data
+	$.post( currentURL + "/api/new", newFriend)
+		.done(function(data){
+			console.log(data);	
+		})
+//put .get here?
+
+	// var searchedCharacter = $("#characterSearch").val().trim();
+
+	// searchedCharacter = searchedCharacter.replace(/\s+/g, '').toLowerCase();
+
+	var currentURL = window.location.origin;
+
+	$.get( currentURL + "/api/", function( data ) {
+
+		for (var i = 0; i < data.length; i++) {
+
+			var sum = data[i].scores.reduce(add, 0);
+
+			function add(a, b) {
+			    return a + b;
+			}
+
+			console.log(sum); //Prints the sum of all scores 
+
+		}
+		//obj would equal the last posted additional friend on click
+		//obj1 would be all on the objects in the array so obj[i] if in a for loop
+		Abs(obj.Param1-obj1.Param1) 
+
+		console.log(data);
+		// if(data == false){
+		// 	$("#name").text("The force is not strong with this one. Your character was not found. ");
+		// 	$("#stats").hide();
+		// }
+		// else {
+		// 	$("#stats").show();
+		// 	$("#name").text(data.name);
+		// 	$("#role").text(data.role);
+		// 	$("#age").text(data.age);
+		// 	$("#forcePoints").text(data.forcePoints);					
+		// }
+
+	});
+
+	return false;
+
+});	
 
 </script>
 </body>

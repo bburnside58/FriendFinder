@@ -16,8 +16,35 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 //Friends storage array
-var friendsList = [];
+var friendsList = [
 
+	{
+		routeName: "judefortune",
+		name: "Jude Fortune",
+		photo: "https://www.facebook.com/jude.b.fortune",
+		scores: [4, 2, 1, 5, 2, 3, 2, 2, 4, 5]		
+	
+	},
+
+	{
+		routeName: "brianburnside",
+		name: "Brian Burnside",
+		photo: "https://twitter.com/bburnside58",
+		scores: [3, 1, 4, 2, 3, 3, 4, 2, 3, 4]
+	}
+];
+//this should go in html, i believe
+// for (var i = 0; i < friendsList.length; i++) {
+
+// 	var sum = friendsList[i].scores.reduce(add, 0);
+
+// 	function add(a, b) {
+// 	    return a + b;
+// 	}
+
+// 	console.log(sum); //Prints the sum of all scores 
+
+// }
 
 
 
@@ -34,8 +61,33 @@ app.get('/survey', function(req, res){
 	res.sendFile(path.join(__dirname + '/app/public/survey.html'));
 })
 
+app.get('/all', function(req, res){	
+	res.sendFile(path.join(__dirname + '/app/public/all.html'));
+})
 
+// Search for matching friend - provides JSON
+app.get('/api/:friendsList?', function(req, res){
 
+	var chosen = req.params.friendsList;
+
+	if(chosen){
+		console.log(chosen);
+
+		for (var i=0; i <friendsList.length; i++){
+
+			if (chosen == friendsList[i].routeName){
+				res.json(friendsList[i]);
+				return;
+			}
+		}
+
+		res.json(false);
+	}
+
+	else{
+		res.json(friendsList);
+	}
+})
 
 
 
@@ -57,6 +109,7 @@ app.get('/survey', function(req, res){
 app.post('/api/new', function(req, res){
 
 	var newfriend = req.body;
+	newfriend.routeName = newfriend.name.replace(/\s+/g, '').toLowerCase()
 
 	console.log(newfriend);
 
