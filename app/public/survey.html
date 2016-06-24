@@ -190,23 +190,50 @@ $(submit).on("click", function(){
 	var currentURL = window.location.origin;
 
 	$.get( currentURL + "/api/", function( data ) {
-
-		for (var i = 0; i < data.length; i++) {
-
-			var sum = data[i].scores.reduce(add, 0);
-
-			function add(a, b) {
-			    return a + b;
-			}
-
-			console.log(sum); //Prints the sum of all scores 
-
+		console.log(data[0].scores);
+		// this works console.log(newFriend.scores);
+		// var user1 = [5,1,4,4,5,1,2,5,4,1];
+		// var user2 = [3,2,6,4,5,1,2,5,4,1];
+		var diff = [];
+		for (var j = 0; j < data.length; j++) {
+			motherArr = data[j];
 		}
+		for (var i = 0; i < 10; i++) {
+
+	    		num = newFriend.scores[i] - motherArr.scores[i];
+	    		diff.push(num);
+	    		// console.log(newFriend.scores[i]);
+	    		// console.log(data[j].scores[i]);
+	    		
+			}
+		console.log(motherArr);
+		console.log(diff);
+		console.log(data);
+
+
+		// newbie = newFriend.scores;
+		// console.log(newbie);
+		// console.log(data[0].scores)
+		// for (var i = 0; i < data.length; i++) {
+
+		// 	var sum = data[i].scores.reduce(add, 0);
+
+		// 	function add(a, b) {
+		// 	    return a + b;
+		// 	}
+
+		// 	console.log(sum); //Prints the sum of all scores
+
+
+		// 	var differenceTraits = Math.abs(newFriend.scores - data[i].scores) 
+		// 	console.log(newFriend);
+
+		// }
 		//obj would equal the last posted additional friend on click
 		//obj1 would be all on the objects in the array so obj[i] if in a for loop
-		Abs(obj.Param1-obj1.Param1) 
+		//Abs(obj.Param1-obj1.Param1) 
 
-		console.log(data);
+		//console.log(data);
 		// if(data == false){
 		// 	$("#name").text("The force is not strong with this one. Your character was not found. ");
 		// 	$("#stats").hide();
