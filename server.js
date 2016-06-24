@@ -15,6 +15,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
+//Friends storage array
+var friendsList = [];
 
 
 
@@ -51,7 +53,17 @@ app.get('/survey', function(req, res){
 
 
 
+// Create New Friends - takes in JSON input
+app.post('/api/new', function(req, res){
 
+	var newfriend = req.body;
+
+	console.log(newfriend);
+
+	friendsList.push(newfriend);
+
+	res.json(newfriend);
+})
 // Starts the server to begin listening 
 // =============================================================
 app.listen(PORT, function(){
