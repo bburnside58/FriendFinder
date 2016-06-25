@@ -1,4 +1,10 @@
 {
+  "name": "node-js-getting-started",
+  "version": "0.2.5",
+  "description": "A sample Node.js app using Express 4",
+  "engines": {
+    "node": "5.8.0"
+  },
   "name": "friendfinder",
   "version": "1.0.0",
   "description": "Uses Express, local server and Node.",

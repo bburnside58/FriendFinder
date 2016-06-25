@@ -31,7 +31,14 @@ var friendsList = [
 		name: "Brian Burnside",
 		photo: "https://twitter.com/bburnside58",
 		scores: [3, 1, 4, 2, 3, 3, 4, 2, 3, 4]
-	}
+	},
+
+	// {
+	// 	routeName: "mattvalle",
+	// 	name: "Matt Valle",
+	// 	photo: "",
+	// 	scores: [2, 2, 1, 3, 5, 3, 4, 2, 1, 3]
+	// }
 ];
 //this should go in html, i believe
 // for (var i = 0; i < friendsList.length; i++) {

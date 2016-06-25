@@ -191,19 +191,48 @@ $(submit).on("click", function(){
 
 	$.get( currentURL + "/api/", function( data ) {
 
-		var diff = [];
+		var a = [];
 
 		for (var j = 0; j < data.length; j++){
 
 			for (var i = 0; i < 10; i++) {
 
-		    		num = Math.abs(newFriend.scores[i] - data[j].scores[i]);
-		    		diff.push(num);
-		   			
+		    		// num = Math.abs(newFriend.scores[i] - data[j].scores[i]);
+		    		// diff.push(num);
+
+
+		    		newFriend.scores.forEach(function(value, index) {
+		    			var tmp = value - data[j].scores[i];
+		      			a.push(tmp)
+					})
+		   			var sum = 0;
+					a.forEach(function(value, index) {
+		    			absolute = Math.abs(value)
+		    			sum += absolute
+					})
+
+
 				}
 		}
-		console.log(data);
-		 console.log(diff);
+		console.log(a);
+		console.log(sum);
+
+		// var user1 = [5,1,4,4,5,1,2,5,4,1];
+		// var user2 = [3,2,6,4,5,1,2,5,4,1];
+		// var a = [];
+		// user1.forEach(function(value, index) {
+		//     var tmp = value - user2[index]
+		//       a.push(tmp)
+		// })
+
+		// console.log(a)
+
+		// var sum = 0;
+		// a.forEach(function(value, index) {
+		//     absolute = Math.abs(value)
+		//     sum += absolute
+		// })
+		// console.log(sum)
 		
 
 
