@@ -190,25 +190,21 @@ $(submit).on("click", function(){
 	var currentURL = window.location.origin;
 
 	$.get( currentURL + "/api/", function( data ) {
-		console.log(data[0].scores);
-		// this works console.log(newFriend.scores);
-		// var user1 = [5,1,4,4,5,1,2,5,4,1];
-		// var user2 = [3,2,6,4,5,1,2,5,4,1];
-		var diff = [];
-		for (var j = 0; j < data.length; j++) {
-			motherArr = data[j];
-		}
-		for (var i = 0; i < 10; i++) {
 
-	    		num = newFriend.scores[i] - motherArr.scores[i];
-	    		diff.push(num);
-	    		// console.log(newFriend.scores[i]);
-	    		// console.log(data[j].scores[i]);
-	    		
-			}
-		console.log(motherArr);
-		console.log(diff);
+		var diff = [];
+
+		for (var j = 0; j < data.length; j++){
+
+			for (var i = 0; i < 10; i++) {
+
+		    		num = Math.abs(newFriend.scores[i] - data[j].scores[i]);
+		    		diff.push(num);
+		   			
+				}
+		}
 		console.log(data);
+		 console.log(diff);
+		
 
 
 		// newbie = newFriend.scores;
